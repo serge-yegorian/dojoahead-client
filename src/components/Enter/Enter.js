@@ -1,4 +1,5 @@
 import './Enter.scss'
+import { Link } from 'react-router-dom';
 
 function Enter() {
     return <section className="enter">
@@ -15,9 +16,11 @@ function Enter() {
                 
                 </p>
             </div>
-            <button className="enter__button">
-                Enter email
-            </button>
+            <Link to='/choose'>
+                <button className="enter__button">
+                    Enter email
+                </button>
+            </Link>
         </form>
     </section>
 }

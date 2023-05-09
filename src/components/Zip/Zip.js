@@ -10,7 +10,7 @@ function Zip() {
                     </label>
                     <input className='zip__input' placeholder='33033' type='zip'/>
                     <p className='zip__description'>
-                        We will show the best gyms based&nbsp;on&nbsp;your&nbsp;location&nbsp;📍<br/><br/>
+                        We will show the best gyms in&nbsp;your&nbsp;area&nbsp;📍<br/><br/>
 
 
                     </p>
