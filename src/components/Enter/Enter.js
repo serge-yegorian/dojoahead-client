@@ -2,7 +2,7 @@ import './Enter.scss'
 
 function Enter() {
     return <section className="enter">
-        <form className="enter__login">
+        <form className="enter__form">
             <div className="enter__form-input">
                 <label htmlFor="email" className="enter__label">
                     Email:
@@ -16,7 +16,7 @@ function Enter() {
                 </p>
             </div>
             <button className="enter__button">
-                Enter 
+                Enter email
             </button>
         </form>
     </section>
