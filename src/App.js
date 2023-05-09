@@ -1,9 +1,12 @@
 import './App.css';
+import Enter from './components/Enter/Enter'
 
 function App() {
   return (
     <>
-      <h1>Dojo Ahead</h1>
+      <main>
+        <Enter/>
+      </main>
     </>
   )
 }

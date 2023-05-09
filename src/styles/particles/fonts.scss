@@ -1,0 +1,48 @@
+
+
+@font-face {
+    font-family: 'Kyiv Sans';
+    src: url('../fonts/KyivType-VariableGX/KyivTypeSans-VarGX.ttf');
+    font-weight: 0 1000;
+    font-display: swap;
+}
+
+@mixin body {
+    font-family: 'Kyiv Sans';
+    font-variation-settings: 
+    'MIDL' 0, 'CONT' 0;
+    font-weight: 400;
+    line-height: 1.4rem;
+    font-size: 1rem;
+    color: #e5e5e5;
+}
+
+@mixin header {
+    font-family: 'Kyiv Sans';
+    font-variation-settings: 
+    'MIDL' -500, 'CONT' 200;
+    font-weight: 400;
+    line-height: 2.8rem;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #e5e5e5;
+}
+
+@mixin link {
+    font-family: 'Kyiv Sans';
+    font-variation-settings:
+    'MIDL' 0, 'CONT' 0; 
+    transition:
+    font-variation-settings 0.2s;
+    text-decoration: none;
+    color: #e5e5e5;
+    cursor: pointer;
+}
+
+@mixin link-hover {
+    font-variation-settings:
+    'MIDL' -200, 'CONT' 200; 
+    font-weight: 900;
+    
+}
+

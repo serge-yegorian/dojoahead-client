@@ -1,0 +1,77 @@
+@use '../../styles/particles/global.scss' as *; 
+@use '../../styles/particles/fonts.scss' as *;
+
+.enter {
+    height: calc(100vh - 2rem);
+    
+
+    &__label {
+        font-size: 2.2rem;
+        font-weight: 600;
+        @include header;
+        text-align: center;
+        margin-bottom: 1rem;
+        margin-top: 4rem;
+    }
+
+    &__login {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__form-input {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__input {
+        height: 2rem;
+        padding: 0 0.5rem;
+        outline: none;
+        @include body;
+        border: none;
+        margin-bottom: 1rem;
+        color: black;
+        transition: 0.2s;
+        margin-bottom: 2rem;
+        background-color: #e5e5e5;
+    }
+
+    &__description {
+        @include body;
+    }
+
+    &__input:focus {
+        background-color: white;
+        box-shadow: 0 0 5px white;
+        border-radius: 4px;
+    }
+
+    &__input:hover {
+        background-color: white;
+        box-shadow: 0 0 5px white;
+        border-radius: 4px;
+    }
+
+    &__button {
+        border: none;
+        height: 2rem;
+        padding: 0 1rem;
+        @include link;
+        color: #323232;
+        background-color: #e5e5e5;
+        transition: 0.2s;
+    }
+
+    &__button:hover {
+        @include link-hover;
+        color: black;
+        background-color: white;
+        box-shadow: 0 0 5px white;
+        border-radius: 4px;
+    }
+
+    
+}
