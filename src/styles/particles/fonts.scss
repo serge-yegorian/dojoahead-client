@@ -10,7 +10,7 @@
 @mixin body {
     font-family: 'Kyiv Sans';
     font-variation-settings: 
-    'MIDL' 0, 'CONT' 0;
+    'MIDL' -300, 'CONT' 0;
     font-weight: 400;
     line-height: 1.4rem;
     font-size: 1rem;
@@ -44,5 +44,24 @@
     'MIDL' -200, 'CONT' 200; 
     font-weight: 900;
     
+}
+
+@mixin zip {
+    font-family: 'Kyiv Sans';
+    font-variation-settings: 
+    'MIDL' -300, 'CONT' 100;
+    font-weight: 400;
+    line-height: 2rem;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+@mixin gym-name {
+    font-family: 'Kyiv Sans';
+    font-variation-settings: 
+    'MIDL' -200, 'CONT' 200;
+    font-weight: 400;
+    font-size: 1.5rem;
+    font-weight: 1000;
 }
 

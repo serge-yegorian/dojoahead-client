@@ -1,4 +1,5 @@
 import './Zip.scss';
+import {Link} from 'react-router-dom';
 
 function Zip() {
     return (
@@ -6,18 +7,20 @@ function Zip() {
             <form className='zip__form'>
                 <div className='zip__form-input'>
                     <label className='zip__label'>
-                        Zip:
+                        Zip Code:
                     </label>
-                    <input className='zip__input' placeholder='33033' type='zip'/>
+                    <input className='zip__input' placeholder='33033' maxLength="5" type='zip'/>
                     <p className='zip__description'>
-                        We will show the best gyms in&nbsp;your&nbsp;area&nbsp;📍<br/><br/>
+                        We will show you the best gyms in&nbsp;your&nbsp;area&nbsp;📍<br/><br/>
 
 
                     </p>
                 </div>
-                <button className="zip__button">
-                    Enter zip
-                </button>
+                <Link to='/gyms'>
+                    <button className="zip__button">
+                        Enter zip
+                    </button>
+                </Link>
             </form>
         </section>
     )

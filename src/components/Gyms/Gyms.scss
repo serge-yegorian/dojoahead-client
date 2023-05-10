@@ -1,0 +1,104 @@
+@use '../../styles/particles/global.scss' as *; 
+@use '../../styles/particles/fonts.scss' as *;
+
+.gyms {
+    
+    
+
+    &__label {
+        font-size: 2.2rem;
+        font-weight: 600;
+        @include header;
+        text-align: center;
+        margin-bottom: 1rem;
+        margin-top: 4rem;
+    }
+
+    &__h2 {
+        @include body;
+        margin-bottom: 0.5rem;
+    }
+
+    &__container {
+        padding: 1rem;
+        background-color: hsla(0, 0, 30%, 1);
+        border-radius: 4px;
+        margin-bottom: 1rem;
+        cursor: pointer;
+        transition: 0.2s;
+        border: 1px solid transparent;
+    }
+
+    &__container:hover {
+        box-shadow: 0 0 5px white;
+        border: 1px solid white;
+    }
+
+    &__container:hover &__address, &__container:hover &__name {
+        color: white;
+    }
+
+    &__logo {
+        width: 100%;
+        background-color: hsla(0, 0%, 30%, 1);
+        margin-bottom: 1rem;
+        
+        border-radius: 1rem;
+    }
+
+    &__header {
+        margin-bottom: 1.5rem
+    }
+
+    &__name {
+        @include gym-name;
+        margin-bottom: 0.5rem;
+        color: #e5e5e5;
+    }
+
+    &__address {
+        color: #e5e5e5;
+        @include body;
+    }
+
+    &__form {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__search-div {
+        display: flex;
+    }
+
+    &__search-bar {
+        height: 2rem;
+        padding: 0 0.5rem;
+        outline: none;
+        @include body;
+        border: none;
+        color: black;
+        transition: 0.2s;
+        background-color: #e5e5e5;
+    }
+
+    &__search-button {
+        border: none;
+        padding: 0 1rem;
+        background-color: #e5e5e5;
+        border-left: 2px solid black;
+        font-size: 1.2rem;
+        cursor: pointer
+    }
+
+    &__description {
+        @include body;
+    }
+
+    &__zip {
+        @include zip;
+    }
+
+    
+}

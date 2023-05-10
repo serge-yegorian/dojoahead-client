@@ -12,8 +12,8 @@ function Enter() {
                 <p className='enter__description'>
                     We will send the confirmation link&nbsp;to&nbsp;your&nbsp;email&nbsp;✅ <br/><br/>
                     Once&nbsp;it's&nbsp;activated, you&nbsp;can access our&nbsp;app through this 
-                    device without a&nbsp;password&nbsp;🔐
-                
+                    device without a&nbsp;password&nbsp;🔐 <br/><br/>
+                    Current version works only in&nbsp;the&nbsp;US&nbsp;🇺🇸
                 </p>
             </div>
             <Link to='/choose'>
