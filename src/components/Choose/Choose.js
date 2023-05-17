@@ -9,7 +9,7 @@ function Choose() {
                     <h2 className='choose__user'>Student</h2>
                     <p className='choose__description'>I am looking for&nbsp;a&nbsp;gym&nbsp;🥋</p>
                 </Link>
-                <Link className='choose__link'>
+                <Link className='choose__link' to='/add'>
                     <h2 className='choose__user'>Gym Owner</h2>
                     <p className='choose__description'>I am looking for&nbsp;new&nbsp;students&nbsp;💰</p>
                 </Link>

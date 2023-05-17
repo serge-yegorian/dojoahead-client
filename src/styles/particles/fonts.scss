@@ -12,7 +12,7 @@
     font-variation-settings: 
     'MIDL' -300, 'CONT' 0;
     font-weight: 400;
-    line-height: 1.4rem;
+    line-height: 1.5rem;
     font-size: 1rem;
     color: #e5e5e5;
 }
@@ -22,9 +22,20 @@
     font-variation-settings: 
     'MIDL' -500, 'CONT' 200;
     font-weight: 400;
-    line-height: 2.8rem;
+    line-height: 2.2rem;
     font-size: 1.8rem;
     font-weight: 900;
+    color: #e5e5e5;
+}
+
+@mixin subheader {
+    font-family: 'Kyiv Sans';
+    font-variation-settings: 
+    'MIDL' -500, 'CONT' 200;
+    font-weight: 400;
+    line-height: 2rem;
+    font-size: 1.4rem;
+    font-weight: 600;
     color: #e5e5e5;
 }
 
@@ -37,12 +48,14 @@
     text-decoration: none;
     color: #e5e5e5;
     cursor: pointer;
+    font-size: 0.9rem;
 }
 
 @mixin link-hover {
     font-variation-settings:
     'MIDL' -200, 'CONT' 200; 
     font-weight: 900;
+    color: white;
     
 }
 

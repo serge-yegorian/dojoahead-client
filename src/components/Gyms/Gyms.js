@@ -1,11 +1,22 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import axios from "axios";
 import './Gyms.scss'
+import { Link, useParams, useLocation } from 'react-router-dom';
+
 
 function Gyms() {
+    const formRef = useRef();
+    const { id } = useParams();
     const [gymsWithin, setGymsWithin] = useState([]);
     const [gymsNear, setGymsNear] = useState([]);
-    let zip = '33026'
+    const [newZip, setNewZip] = useState(null)
+    const location = useLocation();
+    let zip;
+    if (!newZip) {
+        zip = location.state ? location.state.zip : '';
+    } else {
+        zip = newZip
+    }
 
     useEffect(() => {
         axios.get('http://localhost:5050/gyms')
@@ -15,9 +26,14 @@ function Gyms() {
                 const data = response.data;
                 for (let i = 0; i < data.length; i++) {
                     if (data[i].zip === zip) {
-                        within.push(data[i])
-                    } else if (data[i].zip[0] === zip[0] && data[i].zip[1] === zip[1]) {
-                        near.push(data[i])
+                        within.push(data[i]);
+                    } else if (
+                        zip &&
+                        zip.length >= 2 &&
+                        data[i].zip &&
+                        data[i].zip.startsWith(zip.substring(0, 2))
+                    ) {
+                        near.push(data[i]);
                     }
                 }
                 setGymsWithin(within);
@@ -26,62 +42,96 @@ function Gyms() {
     }, [zip]);
 
     if (!(gymsWithin.length > 0) && !(gymsNear.length > 0)) {
-        return <div className='gyms__loading'>
-            loading gyms...
-        </div>
+
+        const findGym = (e) => {
+            e.preventDefault();
+            const zipData = formRef.current.zip.value;
+            setNewZip(zipData)
+            
+            e.target.reset();
+        }
+
+        return (
+            <div className='gyms__error'>
+            <div className='gyms__loading'>
+                <div className="gyms__header">
+                    <form className="gyms__search-div" onSubmit={findGym} ref={formRef}>
+                        <input className="gyms__search-bar" id="zip" type="text" maxLength="5" placeholder="search by zip code..." />
+                        <button  className="gyms__search-button">🔍</button>
+                    </form>
+                </div>
+                <p className='gyms__err-message'>No gyms were found near zip: {zip}</p>
+            </div>
+            </div>
+        );
     } else {
+
+    const findGym = (e) => {
+        e.preventDefault();
+        const zipData = formRef.current.zip.value;
+        setNewZip(zipData)
+
+    }
+
         return (
             <section className="gyms">
+                
                 <div className="gyms__header">
-                    <div className="gyms__search-div">
-                        <input className="gyms__search-bar" type="text" maxLength="5" placeholder="search by zip code..." />
-                        <button className="gyms__search-button">🔍</button>
-                    </div>
+                    <form className="gyms__search-div" onSubmit={findGym} ref={formRef}>
+                        <input className="gyms__search-bar" id="zip" type="text" maxLength="5" placeholder="search by zip code..." />
+                        <button  className="gyms__search-button">🔍</button>
+                    </form>
                 </div>
                 <div className='gyms__results'>
-                    {gymsWithin ? <div className='gyms__array'>
+                    {gymsWithin.length > 0 ? <div className='gyms__array'>
                         <div className='gyms__array-header'>
                             <h2 className='gyms__h2'>Gyms within <span className='gyms__zip'>{zip}</span>:</h2>
                             {gymsWithin.map((gym) => {
+                                const direction = `/gyms/${gym.id}`
                                 return (
-                                    <div className='gyms__container' key={gym.id}>
-                                        <div className='gyms__top'>
-                                            <img className='gyms__logo' src={gym.logo} />
-                                            <h3 className='gyms__name'>{gym.name}</h3>
+                                    <Link key={gym.id} to={direction}>
+                                        <div className='gyms__container' key={gym.id}>
+                                            <div className='gyms__top'>
+                                                <img className='gyms__logo' src={gym.logo} />
+                                                <h3 className='gyms__name'>{gym.name}</h3>
+                                            </div>
+                                            <div className='gyms__bottom'>
+                                                <p className='gyms__address'>{gym.street}</p>
+                                                <p className='gyms__address'>{gym.city}</p>
+                                            </div>
                                         </div>
-                                        <div className='gyms__bottom'>
-                                            <p className='gyms__address'>{gym.street}</p>
-                                            <p className='gyms__address'>{gym.city}</p>
-                                        </div>
-                                    </div>
+                                    </Link>
                                 )
                             })}
                         </div>
                     </div> : null}
-                    {gymsNear ? <div className='gyms__array'>
+                    {gymsNear.length > 0 ? <div className='gyms__array'>
                     <div className='gyms__array-header'>
                             <h2 className='gyms__h2'>Gyms outside <span className='gyms__zip'>{zip}</span>:</h2>
                             {gymsNear.map((gym) => {
+                                const direction = `/gyms/${gym.id}`
                                 return (
-                                    <div className='gyms__container' key={gym.id}>
-                                        <div className='gyms__top'>
-                                            <img className='gyms__logo' src={gym.logo} />
-                                            <h3 className='gyms__name'>{gym.name}</h3>
+                                    <Link key={gym.id} to={direction}>
+                                        <div className='gyms__container'>
+                                            <div className='gyms__top'>
+                                                <img className='gyms__logo' src={gym.logo} />
+                                                <h3 className='gyms__name'>{gym.name}</h3>
+                                            </div>
+                                            <div className='gyms__bottom'>
+                                                <p className='gyms__address'>{gym.street}</p>
+                                                <p className='gyms__address'>{gym.city}</p>
+                                            </div>
                                         </div>
-                                        <div className='gyms__bottom'>
-                                            <p className='gyms__address'>{gym.street}</p>
-                                            <p className='gyms__address'>{gym.city}</p>
-                                        </div>
-                                    </div>
+                                    </Link>
                                 )
                             })}
                         </div>
                     </div> : null}
 
-
                 </div>
+
             </section>
-        )
+        );
     }
 }
 

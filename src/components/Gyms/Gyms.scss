@@ -23,7 +23,7 @@
         padding: 1rem;
         background-color: hsla(0, 0, 30%, 1);
         border-radius: 4px;
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
         cursor: pointer;
         transition: 0.2s;
         border: 1px solid transparent;
@@ -98,6 +98,17 @@
 
     &__zip {
         @include zip;
+    }
+
+    &__loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    &__err-message {
+        @include body;
     }
 
     
