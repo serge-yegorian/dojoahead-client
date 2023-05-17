@@ -12,6 +12,7 @@ function App() {
     <BrowserRouter>
       <main>
         <Routes>
+          <Route path='/' element={<Enter/>}/>
           <Route path='/enter' element={<Enter/>}/>
           <Route path='/zip' element={<Zip/>}/>
           <Route path='/choose' element={<Choose/>}/>
