@@ -2,6 +2,7 @@
 @use '../../styles/particles/fonts.scss' as *;
 
 .gymdetails {
+    position: relative;
 
     &__background {
         position: absolute;
@@ -22,7 +23,7 @@
         align-items: center;
         text-align: center;
         color: #e5e5e5;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
         background-color: hsla(0, 0%, 30%, 1);
         border-radius: 7px;
     }
@@ -30,7 +31,7 @@
     &__logo {
         position: relative;
         z-index: 3;
-        border-radius: 30%;
+        border-radius: 50%;
         height: 6rem;
         
 
@@ -79,6 +80,7 @@
     }
 
     &__schedule-open {
+        margin-top: 0.5rem;
         margin-bottom: 0.5rem;
         padding: 0 1rem;
         height: 2rem;
@@ -98,12 +100,34 @@
         @include link
     }
 
-    &__schedule {
-        display: none;
+    &__schedule--inactive {
+        position: relative;
+        border-radius: 4px;
+    }
+
+    &__schedule--active {
+        width: 100%;
+
+    }
+
+    &__schedule-div--inactive {
+        width: 100%;
+        height: 100%;
+        display: none
+    }
+
+    &__schedule-div--active {
+        
+        display: block;
+    }
+
+    &__schedule-div:hover {
+        opacity:1;
     }
 
     &__main {
         margin-bottom: 2rem;
+
     }
     
     &__footer {

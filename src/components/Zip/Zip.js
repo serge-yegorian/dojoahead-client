@@ -30,7 +30,8 @@ function Zip() {
             onChange={(e) => setZip(e.target.value)}
           />
           <p className='zip__description'>
-            We will show you the best gyms in&nbsp;your&nbsp;area&nbsp;📍
+            We will show you the best martial arts gyms in&nbsp;your&nbsp;area&nbsp;📍 <br/><br/>
+            Current version works only in&nbsp;the&nbsp;US&nbsp;🇺🇸 
             <br />
             <br />
           </p>

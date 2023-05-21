@@ -2,11 +2,12 @@ import './GymDetails.scss';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import {Buffer} from 'buffer'
+
 
 function GymDetails() {
   const { id } = useParams();
   const [data, setData] = useState({});
+  const [open, setOpen] = useState(false)
   const endpoint = '/gyms/';
 
   useEffect(() => {
@@ -16,12 +17,7 @@ function GymDetails() {
       });
   }, []);
 
-  // Convert logo and background data to base64 strings
-
-
-  console.log(data)
-
-
+  
 
   return (
     <section className='gymdetails'>
@@ -37,13 +33,12 @@ function GymDetails() {
         </div>
       </div>
       <div className='gymdetails__main'>
-        <button className='gymdetails__schedule-open'>Schedule <span className="material-symbols-outlined">calendar_month</span></button>
-        {/* Replace the below image tag with the desired image */}
-        <img className='gymdetails__schedule' alt="Gym Schedule" />
+        <button className='gymdetails__schedule-open' onClick={() => setOpen(!open)}>Schedule <span className="material-symbols-outlined">calendar_month</span></button>
+        <div className={`gymdetails__schedule-div${open? '--active': `--inactive`}`}>
+          <img className={`gymdetails__schedule${open? '--active': `--inactive`}`} src={data.schedule} alt="Gym Schedule" />
+        </div>
         <h2 className='gymdetails__coach'>Head Coach {data.coachName}:</h2>
-        <p className='gymdetails__bio'>
-          {data.bio}
-        </p>
+        <p className='gymdetails__bio'>{data.bio}</p>
       </div>
       <div className='gymdetails__footer'>
         <div className='gymdetails__left'>
