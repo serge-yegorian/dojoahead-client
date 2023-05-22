@@ -36,7 +36,10 @@ function Zip() {
             <br />
           </p>
         </div>
-        <button className='zip__button' type='submit'>Enter zip</button> {/* Remove Link wrapping */}
+        <div className='zip__bottom'>
+          <p className='zip__dev-info'>If you want to add your gym, sign up</p>
+          <button className='zip__button' type='submit'>Enter zip</button>
+        </div>
       </form>
     </section>
   );
