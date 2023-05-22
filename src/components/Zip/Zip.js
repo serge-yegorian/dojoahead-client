@@ -37,7 +37,7 @@ function Zip() {
           </p>
         </div>
         <div className='zip__bottom'>
-          <p className='zip__dev-info'>If you want to add your gym, sign up</p>
+          <p className='zip__dev-info'>If you want to add your gym, <Link className='zip__signup' to={'/enter'}>sign up!</Link></p>
           <button className='zip__button' type='submit'>Enter zip</button>
         </div>
       </form>

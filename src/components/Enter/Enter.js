@@ -16,7 +16,7 @@ function Enter() {
                     Current version works only in&nbsp;the&nbsp;US&nbsp;🇺🇸
                 </p>
             </div>
-            <Link to='/choose'>
+            <Link to='#'>
                 <button className="enter__button">
                     Enter email
                 </button>

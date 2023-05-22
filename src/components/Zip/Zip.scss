@@ -3,6 +3,8 @@
 
 .zip {
     height: 80vh;
+    padding: 2rem;
+
     
 
     &__label {
@@ -74,5 +76,23 @@
         border-radius: 4px;
     }
 
+    &__dev-info {
+        margin-bottom: 1rem;
+        @include body;
+        padding: 0 0.7rem;
+        display: flex;
+        align-items: center
+    }
+
+    &__signup {
+        @include link;
+        text-decoration: underline;
+        transition: 0.2s;
+        padding: 0.5rem;
+    }
+
+    &__signup:hover {
+        @include link-hover;
+    }
     
 }

@@ -17,11 +17,6 @@ function AddGym() {
         e.preventDefault();
         const name = formRef.current.name.value;
         const bio = formRef.current.bio.value;
-        const coachSmoothcomp = formRef.current.coachSmoothcomp.value;
-        const coachFb = formRef.current.facebook.value;
-        const coachInsta = formRef.current.instagram.value;
-        const coachName = formRef.current.coachName.value;
-        const coachBio = formRef.current.coachBio.value;
         const street = formRef.current.street.value;
         const city = formRef.current.city.value;
         const zip = formRef.current.zip.value;
@@ -38,18 +33,13 @@ function AddGym() {
             smoothcomp: smoothcomp, 
             fb: fb, 
             insta: insta, 
-            coachName: coachName, 
-            coachBio: coachBio, 
             street: street, 
             city: city,
             zip: zip, 
             logo: logo, 
             background: background, 
             schedule: schedule, 
-            coachSmoothcomp: coachSmoothcomp, 
             website: website, 
-            coachFb: coachFb, 
-            coachInsta: coachInsta
         };
 
         let newGymObject;
@@ -105,7 +95,8 @@ function AddGym() {
 return (
     // enctype="multipart/form-data" method="post"
     <form className='add' onSubmit={shareGym} ref={formRef} >
-        <div className='add__section'>
+        <h2 className='add__title'>Publish Your Gym:</h2>
+        {/* <div className='add__section'>
             <h2 className='add__title'>Personal Info:</h2>
             <div className='add__content'>
                 <div className='add__field'>
@@ -131,19 +122,20 @@ return (
                     <input className='add__input' id='instagram' name='instagram' type='text' />
                 </div>
             </div>
-        </div>
+        </div> */}
         <div className='add__section'>
-            <h2 className='add__title'>Gym Info:</h2>
-            <div className='add_content'>
+            <div className='add__content'>
                 <div className='add__field'>
                     <label className='add__label' htmlFor='name'>Gym name:</label>
-                    <input className='add__input' id='name' name='name' type='text' />
+                    <input className='add__input' id='name' name='name' type='text' placeholder='10th Planet ' />
                 </div>
                 <div className='add__field'>
                     <label className='add__label' htmlFor='bio'>Gym bio:</label>
                     <textarea className='add__input add__input--textarea' id='bio' name='bio' placeholder='We have 4 IBJJF champions and crossfit area' rows='4'>
                     </textarea>
                 </div>
+            </div>
+            <div className='add__content'>
                 <h3 className='add__subheading'>Address:</h3>
                 <div className='add__field'>
                     <label className='add__label' htmlFor='street'>Street:</label>
@@ -157,29 +149,37 @@ return (
                     <label className='add__label' htmlFor='zip'>Zip code:</label>
                     <input className='add__input' id='zip' name='zip' type='text' />
                 </div>
+            </div>
+            <div className='add__content'>
                 <h3 className='add__subheading'>Media files:</h3>
-                <div className="add__field">
-                    <label className="add__label" htmlFor="logo">
-                        Logo:
-                    </label>
-                    <input className="add__input" id="logo" name="logo" type="file" accept="image/*" onChange={(e) => {
+                {/* */}
+                <div className="add__field add__field--image" >
+                    <input className="add__input add__input--image invisible"  id="logo" name="logo" type="file" accept="image/*" onChange={(e) => {
                         const selectedFile = e.target.files[0];
                     }} />
+                    {/* Fake one */}
+                        <button className='add__input--image' type='button' onClick={() => document.getElementById("logo").click()}><span className="material-symbols-outlined icon">upload_file</span>Logo</button>
+                    {/* */}
                 </div>
-                <div className="add__field">
-                    <label className="add__label" htmlFor="background">
-                        Background image:
-                    </label>
-                    <input className="add__input" id="background" name="background" type="file" accept="image/*" onChange={(e) => {
+                
+                <div className="add__field add__field--image">
+                    <input className="add__input add__input--image invisible" id="background" name="background" type="file" accept="image/*" onChange={(e) => {
                         const selectedFile = e.target.files[0];
                     }} />
+                    {/* Fake one */}
+                    <button className='add__input--image' type='button' onClick={() => document.getElementById("background").click()}><span className="material-symbols-outlined icon">upload_file</span>Background</button>
+                    {/* */}
                 </div>
-                <div className='add__field'>
-                    <label className='add__label' htmlFor='schedule'>Schedule:</label>
-                    <input className='add__input' id='schedule' name='schedule' type="file" accept="image/*" onChange={(e) => {
+                <div className='add__field add__field--image'>
+                    <input className='add__input add__input--image invisible' id='schedule' name='schedule' type="file" accept="image/*" onChange={(e) => {
                         const selectedFile = e.target.files[0];
                     }} />
+                    {/* Fake one */}
+                    <button className='add__input--image' type='button' onClick={() => document.getElementById("schedule").click()}><span className="material-symbols-outlined icon">upload_file</span>Schedule</button>
+                    {/* */}
                 </div>
+            </div>
+            <div className='add__content'>
                 <h3 className='add__subheading'>Media links:</h3>
                 <div className='add__field'>
                     <label className='add__label' htmlFor='website'>Website:</label>
@@ -198,14 +198,14 @@ return (
                     <input className='add__input' name='insta' id='insta' type='text' />
                 </div>
             </div>
+        
+            <div className='add__buttons'>
+                <Link to='/choose' className='add__cancel'>Cancel</Link>
 
-        </div>
-        <div className='add__buttons'>
-            <Link to='/choose' className='add__cancel'>Cancel</Link>
+                <button className='add__submit' type='submit'>Submit</button>
 
-            <button className='add__submit' type='submit'>Submit</button>
-
-        </div>
+            </div>
+            </div>
     </form>
 )
 }

@@ -37,7 +37,7 @@ function GymDetails() {
         <div className={`gymdetails__schedule-div${open? '--active': `--inactive`}`}>
           <img className={`gymdetails__schedule${open? '--active': `--inactive`}`} src={data.schedule} alt="Gym Schedule" />
         </div>
-        <h2 className='gymdetails__coach'>Head Coach {data.coachName}:</h2>
+
         <p className='gymdetails__bio'>{data.bio}</p>
       </div>
       <div className='gymdetails__footer'>

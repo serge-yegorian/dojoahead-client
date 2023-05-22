@@ -3,6 +3,7 @@
 
 .gymdetails {
     position: relative;
+    background-color: hsla(0, 0%, 25%, 1);
 
     &__background {
         position: absolute;
@@ -33,6 +34,7 @@
         z-index: 3;
         border-radius: 50%;
         height: 6rem;
+        width: 6rem;
         
 
     }
@@ -50,8 +52,7 @@
     &__heading {
         position: relative;
         z-index: 2;
-        padding-bottom: 1rem;
-        padding-top: 1rem;
+        padding: 1rem 2rem;
         color: white;
         @include header;
         background-color: hsla(0, 0%, 0%, 0.5);
@@ -80,8 +81,7 @@
     }
 
     &__schedule-open {
-        margin-top: 0.5rem;
-        margin-bottom: 0.5rem;
+        margin: 1rem 0;
         padding: 0 1rem;
         height: 2rem;
         @include link;
@@ -107,6 +107,7 @@
 
     &__schedule--active {
         width: 100%;
+        margin-bottom: 1rem;
 
     }
 
@@ -127,6 +128,7 @@
 
     &__main {
         margin-bottom: 2rem;
+        padding: 0 2rem;
 
     }
     
@@ -134,6 +136,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        padding: 0 2rem 2rem;
     }
 
     &__website {
