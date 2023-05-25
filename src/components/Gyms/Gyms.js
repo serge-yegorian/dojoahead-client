@@ -107,7 +107,7 @@ function Gyms() {
                     </div> : null}
                     {gymsNear.length > 0 ? <div className='gyms__array'>
                     <div className='gyms__array-header'>
-                            <h2 className='gyms__h2'>Gyms outside <span className='gyms__zip'>{zip}</span>:</h2>
+                            <h2 className='gyms__h2'>Gyms near <span className='gyms__zip'>{zip}</span>:</h2>
                             {gymsNear.map((gym) => {
                                 const direction = `/gyms/${gym.id}`
                                 return (

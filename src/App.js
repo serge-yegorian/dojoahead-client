@@ -5,6 +5,7 @@ import Zip from './components/Zip/Zip';
 import Gyms from './components/Gyms/Gyms';
 import GymDetails from './components/GymDetails/GymDetails';
 import AddGym from './components/AddGym/AddGym';
+import Login from './components/Login/Login';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path='/gyms' element={<Gyms/>}/>
           <Route path='/gyms/:id' element={<GymDetails/>}/>
           <Route path='/add' element={<AddGym/>}/>
+          <Route path='/login' element={<Login/>}/>
         </Routes>
       </main>
     </BrowserRouter>

@@ -1,18 +1,25 @@
-import './Enter.scss'
+import './Login.scss'
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useCookies } from 'react-cookie';
 
-function Enter() {
+function Login() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+
+    const [cookies, setCookies] = useCookies(['access_token'])
+
+    const navigate = useNavigate();
 
     const onSubmit = (e) => {
         e.preventDefault();
         axios
-          .post('http://localhost:3001/auth/register', { username, password })
+          .post('http://localhost:3001/auth/login', { username, password })
           .then((response) => {
-            alert('Registered successfully!');
+            window.localStorage.setItem("userID", response.data.userID)
+            setCookies("access_token", response.data.token)
+            navigate("/")
           })
           .catch((error) => {
             console.log(error);
@@ -23,7 +30,7 @@ function Enter() {
     return <section className="enter">
         <form className="enter__form" onSubmit={onSubmit}>
             <div className='enter__content'>
-                <h1 className='enter__signup'>Register</h1>
+                <h1 className='enter__signup'>Log In</h1>
                 <div className='enter__input-fields'>
                     <div className="enter__form-input">
                         <label htmlFor="email" className="enter__label">Email:</label>
@@ -37,13 +44,13 @@ function Enter() {
             </div>
             
             <div className='enter__bottom'>
-                <p className='enter__dev-info'>Already have an account? <Link className='enter__login' to={'/login'}>Log In!</Link></p>
+                <p className='enter__dev-info'>Do not have an account? <Link className='enter__login' to={'/enter'}>Register</Link></p>
                     <button className="enter__button">
-                        Register
+                        Log In
                     </button>
             </div>
         </form>
     </section>
 }
 
-export default Enter;
+export default Login;
