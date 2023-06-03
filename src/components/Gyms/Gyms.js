@@ -1,12 +1,12 @@
 import { useEffect, useState, useRef } from 'react';
 import axios from "axios";
 import './Gyms.scss'
-import { Link, useParams, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 
 function Gyms() {
     const formRef = useRef();
-    const { id } = useParams();
+    // const { id } = useParams();
     const [gymsWithin, setGymsWithin] = useState([]);
     const [gymsNear, setGymsNear] = useState([]);
     const [newZip, setNewZip] = useState(null)
@@ -19,7 +19,7 @@ function Gyms() {
     }
 
     useEffect(() => {
-        axios.get('http://localhost:5050/gyms')
+        axios.get('http://localhost:3001/gyms')
             .then((response) => {
                 const within = [];
                 const near = [];
@@ -56,11 +56,12 @@ function Gyms() {
             <div className='gyms__loading'>
                 <div className="gyms__header">
                     <form className="gyms__search-div" onSubmit={findGym} ref={formRef}>
-                        <input className="gyms__search-bar" id="zip" type="text" maxLength="5" placeholder="search by zip code..." />
+                        <input className="gyms__search-bar" id="zip" type="text" maxLength="5" minLength='5' placeholder="search by zip code..." />
                         <button  className="gyms__search-button">🔍</button>
                     </form>
                 </div>
-                <p className='gyms__err-message'>No gyms were found near zip: {zip}</p>
+                <p className='gyms__err-message'>No gyms were found near you&nbsp;😞</p>
+                <div className='empty'></div>
             </div>
             </div>
         );
@@ -78,7 +79,7 @@ function Gyms() {
                 
                 <div className="gyms__header">
                     <form className="gyms__search-div" onSubmit={findGym} ref={formRef}>
-                        <input className="gyms__search-bar" id="zip" type="text" maxLength="5" placeholder="search by zip code..." />
+                        <input className="gyms__search-bar" id="zip" type="text" maxLength="5" minLength='5' placeholder="search by zip code..." />
                         <button  className="gyms__search-button">🔍</button>
                     </form>
                 </div>
@@ -87,12 +88,12 @@ function Gyms() {
                         <div className='gyms__array-header'>
                             <h2 className='gyms__h2'>Gyms within <span className='gyms__zip'>{zip}</span>:</h2>
                             {gymsWithin.map((gym) => {
-                                const direction = `/gyms/${gym.id}`
+                                const direction = `/gyms/${gym._id}`
                                 return (
-                                    <Link key={gym.id} to={direction}>
+                                    <Link key={gym._id} to={direction}>
                                         <div className='gyms__container' key={gym.id}>
                                             <div className='gyms__top'>
-                                                <img className='gyms__logo' src={gym.logo} />
+                                                <img className='gyms__logo' src={gym.logo} alt="gym logo" />
                                                 <h3 className='gyms__name'>{gym.name}</h3>
                                             </div>
                                             <div className='gyms__bottom'>
@@ -109,12 +110,12 @@ function Gyms() {
                     <div className='gyms__array-header'>
                             <h2 className='gyms__h2'>Gyms near <span className='gyms__zip'>{zip}</span>:</h2>
                             {gymsNear.map((gym) => {
-                                const direction = `/gyms/${gym.id}`
+                                const direction = `/gyms/${gym._id}`
                                 return (
-                                    <Link key={gym.id} to={direction}>
+                                    <Link key={gym._id} to={direction}>
                                         <div className='gyms__container'>
                                             <div className='gyms__top'>
-                                                <img className='gyms__logo' src={gym.logo} />
+                                                <img className='gyms__logo' src={gym.logo} alt="gym logo" />
                                                 <h3 className='gyms__name'>{gym.name}</h3>
                                             </div>
                                             <div className='gyms__bottom'>

@@ -11,16 +11,15 @@ function GymDetails() {
   const endpoint = '/gyms/';
 
   useEffect(() => {
-    axios.get(`http://localhost:5050${endpoint}${id}`)
+    axios.get(`http://localhost:3001${endpoint}${id}`)
       .then((response) => {
-        setData(response.data[0]);
+        setData(response.data);
       });
   }, []);
 
-  
-
   return (
     <section className='gymdetails'>
+      <div className='gymdetails__top'>
       <div className='gymdetails__header'>
       <img className='gymdetails__background' src={data.background} alt="Gym Background" />
         <div className='gymdetails__logo-div'>
@@ -39,6 +38,7 @@ function GymDetails() {
         </div>
 
         <p className='gymdetails__bio'>{data.bio}</p>
+      </div>
       </div>
       <div className='gymdetails__footer'>
         <div className='gymdetails__left'>

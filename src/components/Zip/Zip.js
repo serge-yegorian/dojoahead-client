@@ -26,6 +26,7 @@ function Zip() {
             id='zip'
             placeholder='33033'
             maxLength='5'
+            minLength='5'
             type='text'
             onChange={(e) => setZip(e.target.value)}
           />

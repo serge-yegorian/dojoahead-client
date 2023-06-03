@@ -3,11 +3,15 @@
 
 .add {
     padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     &__field {
         display: flex;
         flex-direction: column;
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
     }
 
     &__field:last-of-type {
@@ -29,28 +33,33 @@
         color: #323232;
     }
 
+    &__error {
+        margin-top: 0.7rem;
+        @include link;
+        color: hsla(0, 100%, 70%, 1);
+    }
+
     &__input--textarea {
         height: 6rem;
     }
 
     &__label {
         @include link;
-        margin-bottom: 4px;
+        margin-bottom: 0.5rem;
     }
 
     &__input--image {
         height: 3rem;
         cursor: pointer;
         padding: 0 2rem;
-        width: fit-content;
-        display: flex;
         align-items: center;
         @include link;
         color: #323232;
         transition: 0.2s;
         border-radius: 4px;
         border: none;
-        
+        display: flex;
+        justify-content: center;
     }
 
     &__input--image:hover {
@@ -61,12 +70,12 @@
     }
 
     &__subheading {
-        margin-bottom: 0.5rem;
         @include subheader;
+        margin-bottom: 4rem;
     }
 
     &__title {
-        margin-bottom: 1rem;
+        margin-bottom: 4rem;
         @include header;
     }
 
@@ -120,10 +129,6 @@
         background-color: white;
         box-shadow: 0 0 5px white;
         border-radius: 4px;
-    }
-
-    &__content {
-        margin-bottom: 2rem;
     }
 
 }
