@@ -2,11 +2,10 @@
 @use '../../styles/particles/fonts.scss' as *;
 
 .zip {
-    padding: 2rem;
+    padding: 1rem;
     min-height: 100vh;
     display: flex;
-
-    
+    justify-content: center;
 
     &__label {
         font-size: 2.2rem;

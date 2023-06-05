@@ -12,7 +12,7 @@ const AddImages = () => {
   console.log(gymId)
 
   const next = () => {
-    navigate(`/gyms/${gymId}`, { state: { gymId } })
+    navigate(`/addmedialinks`, { state: { gymId } })
   }
 
     const selectLogo = (e) => {

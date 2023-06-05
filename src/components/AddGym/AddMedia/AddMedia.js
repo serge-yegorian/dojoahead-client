@@ -26,7 +26,7 @@ const AddMedia = () => {
       })
       .then((res) => {
         console.log(res.data)
-        navigate("/addimages", { state: { gymId } });
+        navigate(`/gyms/${gymId}`, { state: { gymId } });
       })
       .catch((err) => {
         console.log(err);
@@ -45,6 +45,7 @@ const AddMedia = () => {
                             id="website"
                             name="website"
                             type="text"
+                            placeholder="https://website.com"
                         />
                     </div>
                     <div className="add__field">
@@ -56,6 +57,7 @@ const AddMedia = () => {
                             id="smoothcomp"
                             name="smoothcomp"
                             type="text"
+                            placeholder="https://smoothcomp.com"
                         />
                     </div>
                     <div className="add__field">
@@ -67,6 +69,7 @@ const AddMedia = () => {
                             id="fb"
                             name="fb"
                             type="text"
+                            placeholder="https://facebook.com"
                         />
                     </div>
                     <div className="add__field">
@@ -78,6 +81,7 @@ const AddMedia = () => {
                             name="insta"
                             id="insta"
                             type="text"
+                            placeholder="https://insta.com"
                         />
                     </div>
                 </div>

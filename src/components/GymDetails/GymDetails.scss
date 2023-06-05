@@ -8,6 +8,46 @@
     flex-direction: column;
     justify-content: space-between;
 
+    &__contacts {
+        position: absolute;
+        z-index: 3;
+        height: 100%;
+        width: 100%;
+        background-color: hsla(0, 0%, 0%, 60%);
+        top: 0;
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 1.5rem;
+    }
+
+    &__close-image {
+        width: 100%;
+        background-color: white;
+        border-radius: 50%;
+        transition: 0.2s;
+    }
+
+    &__close {
+        width: 2rem;
+        position: absolute;
+        right: 1.5rem;
+        cursor: pointer;
+        border-radius: 50%;
+    }
+
+    &__close:hover &__close-image {
+        box-shadow: 0 0 15px white;
+    }
+
+    &__button--contact {
+        width: 100%;
+        color: black;
+        margin-bottom: 2rem;
+    }
+
     &__background {
         position: absolute;
         top: 0;
@@ -87,6 +127,7 @@
         transition: 0.2s;
     }
 
+
     &__schedule-open:hover {
         @include link-hover;
         background-color: black;
@@ -126,7 +167,7 @@
     }
 
     &__main {
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
         padding: 0 2rem;
 
     }
@@ -135,7 +176,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 2rem 2rem;
+        padding: 0 2rem;
     }
 
     &__website {
@@ -170,4 +211,39 @@
         width: 1.5rem;
         margin-left: 1rem;
     }
+
+    &__buttons {
+        display: flex;
+        align-items: center;
+        padding: 1.5rem;
+        gap: 0 1rem;
+    }
+
+    &__button {
+        height: 3rem;
+        font-size: 2rem;
+        @include link;
+        color: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        transition: 0.2s;
+        background-color: #e5e5e5;
+    }
+
+    &__button:hover {
+        @include link-hover;
+        color: black;
+    }
+
+    &__button--secondary {
+        width: 30%;
+    }
+
+    &__button--primary {
+        width: 70%;
+    }
 }
+
+

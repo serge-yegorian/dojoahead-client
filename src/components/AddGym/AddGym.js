@@ -11,6 +11,8 @@ function AddGym() {
   const [gym, setGym] = useState({
     name: "",
     bio: "",
+    email: "",
+    phoneNumber: "",
     street: "",
     city: "",
     zip: "",
@@ -55,7 +57,7 @@ function AddGym() {
         <div className="add__content">
           <div className="add__field">
             <label className="add__label" htmlFor="name">
-              Gym name:
+              Gym name:*
             </label>
             <input
               className="add__input"
@@ -64,19 +66,50 @@ function AddGym() {
               type="text"
               placeholder="10th Planet "
               onChange={handleChange}
+              required={true}
+            />
+          </div>
+          <div className="add__field">
+            <label className="add__label" htmlFor="email">
+              Gym email:*
+            </label>
+            <input
+              className="add__input"
+              id="email"
+              name="email"
+              type="email"
+              placeholder="dojo@gmail.com"
+              onChange={handleChange}
+              required={true}
+            />
+          </div>
+          <div className="add__field">
+            <label className="add__label" htmlFor="phoneNumber">
+              Gym phone number:*
+            </label>
+            <input
+              className="add__input"
+              id="phoneNumber"
+              name="phoneNumber"
+              type="text"
+              maxLength="10"
+              minLength="10"
+              placeholder="561 000 0561 (no dashes or spaces)"
+              onChange={handleChange}
+              required={true}
             />
           </div>
           <div className="add__field">
             <label className="add__label" htmlFor="bio">
-              Gym bio:
+              Gym bio:*
             </label>
             <textarea
               className="add__input add__input--textarea"
               id="bio"
               name="bio"
               placeholder="We have 4 IBJJF champions and crossfit area"
-              rows="4"
               onChange={handleChange}
+              required={true}
             ></textarea>
           </div>
         </div>

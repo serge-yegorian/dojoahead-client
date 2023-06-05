@@ -92,13 +92,13 @@ function Gyms() {
                                 return (
                                     <Link key={gym._id} to={direction}>
                                         <div className='gyms__container' key={gym.id}>
-                                            <div className='gyms__top'>
+                                        <div className='gyms__top'>
                                                 <img className='gyms__logo' src={gym.logo} alt="gym logo" />
-                                                <h3 className='gyms__name'>{gym.name}</h3>
-                                            </div>
-                                            <div className='gyms__bottom'>
-                                                <p className='gyms__address'>{gym.street}</p>
-                                                <p className='gyms__address'>{gym.city}</p>
+                                                <div className='gyms__bottom'>
+                                                    <h3 className='gyms__name'>{gym.name}</h3>
+                                                    <p className='gyms__address'>{gym.street}</p>
+                                                    <p className='gyms__address'>{gym.city}</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </Link>
@@ -113,17 +113,17 @@ function Gyms() {
                                 const direction = `/gyms/${gym._id}`
                                 return (
                                     <Link key={gym._id} to={direction}>
-                                        <div className='gyms__container'>
-                                            <div className='gyms__top'>
-                                                <img className='gyms__logo' src={gym.logo} alt="gym logo" />
-                                                <h3 className='gyms__name'>{gym.name}</h3>
-                                            </div>
+                                    <div className='gyms__container' key={gym.id}>
+                                    <div className='gyms__top'>
+                                            <img className='gyms__logo' src={gym.logo} alt="gym logo" />
                                             <div className='gyms__bottom'>
+                                                <h3 className='gyms__name'>{gym.name}</h3>
                                                 <p className='gyms__address'>{gym.street}</p>
                                                 <p className='gyms__address'>{gym.city}</p>
                                             </div>
                                         </div>
-                                    </Link>
+                                    </div>
+                                </Link>
                                 )
                             })}
                         </div>

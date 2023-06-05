@@ -8,7 +8,8 @@ body {
 main {
     min-height: 100vh;
     background-color: #323232;
-    width: 400px;
+    max-width: 400px;
     margin: 0 auto;
     position: relative;
+    width: 100vw;
 }
