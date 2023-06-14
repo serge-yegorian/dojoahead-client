@@ -1,35 +1,57 @@
 import './GymDetails.scss';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 
 function GymDetails() {
   const { id } = useParams();
   const [data, setData] = useState({});
   const [open, setOpen] = useState(false)
-  const endpoint = '/gyms/';
+  const endpoint = 'http://localhost:3001/gyms/';
   const navigate = useNavigate();
+  const gymId = id;
 
   const goBack = () => {
-    navigate(-1);
+    navigate("/gyms");
   }
 
   const openContacts = () => {
-    const contacts = document.querySelector(".gymdetails__contacts");
+    const contacts = document.querySelector(".gymdetails__hidden--contacts");
     const background = document.querySelector(".gymdetails");
     contacts.style.display = "flex";
     background.style.filter = "blur(3px)"
   }
 
-  const closeContacts = () => {
-    const contacts = document.querySelector(".gymdetails__contacts");
+  const openEdit = () => {
+    const edit = document.querySelector(".gymdetails__hidden--edit");
     const background = document.querySelector(".gymdetails");
-    contacts.style.display = "none";
+    edit.style.display = "flex";
+    background.style.filter = "blur(3px)"
+  }
+
+  const closeContacts = () => {
+    const edit = document.querySelector(".gymdetails__hidden--edit");
+    const contact = document.querySelector(".gymdetails__hidden--contacts")
+    const background = document.querySelector(".gymdetails");
+    edit.style.display = "none";
+    contact.style.display = "none";
     background.style.filter = "none";
   }
 
+  const deleteGym = () => {
+    axios.delete(`${endpoint}${gymId}`)
+    .then((response) => {
+      console.log(response.data)
+      alert('Gym was deleted successfully!')
+      navigate("/gyms")
+    })
+    .catch((err) => {
+      console.log(err.data)
+    })
+  }
+
   useEffect(() => {
-    axios.get(`http://localhost:3001${endpoint}${id}`)
+    axios.get(`${endpoint}${id}`)
       .then((response) => {
         setData(response.data);
       });
@@ -39,7 +61,7 @@ function GymDetails() {
 
   return (
     <div>
-    <div className='gymdetails__contacts'>
+    <div className='gymdetails__hidden gymdetails__hidden--contacts'>
       <div className='empty'></div>
       <div className='gymdetails__close' onClick={closeContacts}>
         <img className='gymdetails__close-image' src={require("../../images/close.svg").default}/>
@@ -49,15 +71,30 @@ function GymDetails() {
         <a className='gymdetails__button gymdetails__button--contact' href={`tel:${data.phoneNumber}`}>{data.phoneNumber ? <>({[data.phoneNumber[0], data.phoneNumber[1], data.phoneNumber[2]]}) {[data.phoneNumber[3], data.phoneNumber[4], data.phoneNumber[5]]} {[data.phoneNumber[6], data.phoneNumber[7], data.phoneNumber[8], data.phoneNumber[9]]}</> : ""}</a>
       </div>
       <div className='empty'>
-
+      </div>
+    </div>
+    <div className="gymdetails__hidden gymdetails__hidden--edit">
+      <div className='empty'>
+      </div>
+        <div className='gymdetails__close' onClick={closeContacts}>
+          <img className='gymdetails__close-image' src={require("../../images/close.svg").default}/>
+        </div>
+        <div className='gymdetails__editButtons'>
+          <div className='gymdetails__button gymdetails__button--edit' onClick={()=>{navigate("/editgym",{ state: { gymId } } )}}>Name, Bio, Email, Phone Number</div>
+          <div className='gymdetails__button gymdetails__button--edit' onClick={()=>{navigate("/editaddress",{ state: { gymId } } )}}>Address</div>
+          <div className='gymdetails__button gymdetails__button--edit' onClick={()=>{navigate("/editmediafiles",{ state: { gymId } } )}}>Logo, Schedule, Backgound</div>
+          <div className='gymdetails__button gymdetails__button--edit' onClick={()=>{navigate("/editmedialinks",{ state: { gymId } } )}}>Social Media Links</div>
+        </div>
+      <div className='empty'>
+      <div className='gymdetails__button gymdetails__button--delete' onClick={deleteGym}>Delete Gym</div>
       </div>
     </div>
     <section className='gymdetails'>
       <div className='gymdetails__top'>
       <div className='gymdetails__header'>
-      <img className='gymdetails__background' src={data.background} alt="Gym Background" />
+      <img className='gymdetails__background' src={data.background == "" ? require("../../images/defaultbackground.jpeg") : data.background} alt="Gym Background" />
         <div className='gymdetails__logo-div'>
-        <img className='gymdetails__logo' src={data.logo}   alt="Gym Logo" />
+        <img className='gymdetails__logo' src={data.logo == "" ? require("../../images/defaultlogo.jpeg") : data.logo}   alt="Gym Logo" />
         </div>
         <h1 className='gymdetails__heading'>{data.name}</h1>
         <div className='gymdetails__address'>
@@ -66,7 +103,7 @@ function GymDetails() {
         </div>
       </div>
       <div className='gymdetails__main'>
-      {data.schedule === ""? "" : <button className='gymdetails__schedule-open' onClick={() => setOpen(!open)}>Schedule <span className="material-symbols-outlined">calendar_month</span></button>}
+      {data.schedule === ""? "" : <button className='gymdetails__schedule-open' onClick={() => setOpen(!open)}>Schedule 🗓️</button>}
         <div className={`gymdetails__schedule-div${open? '--active': `--inactive`}`}>
           <img className={`gymdetails__schedule${open? '--active': `--inactive`}`} src={data.schedule} alt="Gym Schedule" />
         </div>
@@ -78,7 +115,7 @@ function GymDetails() {
         <div className='gymdetails__left'>
           <p className='gymdetails__website'>
           {data.website === ""? "" : <a className='gymdetails__weblink' href={data.website} target="_blank" rel="noopener noreferrer">
-              Website <span className="material-symbols-outlined">open_in_new</span>
+              Website 🔗
             </a>}
           </p>
         </div>
@@ -93,9 +130,9 @@ function GymDetails() {
         <button className='gymdetails__button gymdetails__button--secondary' type='button' onClick={goBack}>
          Back
         </button>
-        <button className='gymdetails__button gymdetails__button--primary' onClick={openContacts}>
+        {window.localStorage.getItem("userID") === data.gymOwner ? <button className='gymdetails__button gymdetails__button--primary' onClick={openEdit}>Edit Gym</button> :  <button className='gymdetails__button gymdetails__button--primary' onClick={openContacts}>
          Contact
-        </button>
+        </button>}
       </div>
     </section>
     </div>

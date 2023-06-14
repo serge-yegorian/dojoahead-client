@@ -8,7 +8,11 @@
     flex-direction: column;
     justify-content: space-between;
 
-    &__contacts {
+    &__button--edit {
+        margin-bottom: 2rem;
+    }
+
+    &__hidden {
         position: absolute;
         z-index: 3;
         height: 100%;
@@ -43,7 +47,6 @@
     }
 
     &__button--contact {
-        width: 100%;
         color: black;
         margin-bottom: 2rem;
     }
@@ -56,6 +59,7 @@
         width: 100%;
         height: 100%;
         z-index: 1;
+        object-fit: cover;
     }
 
     &__header {
@@ -77,6 +81,7 @@
         width: 6rem;
         background-color: black;
         box-shadow: 0 0 10px black;
+        object-fit: cover;
     }
 
     &__logo-div {
@@ -120,17 +125,20 @@
         margin: 1rem 0;
         padding: 0 1rem;
         height: 2rem;
+        min-width: 125px;
         @include link;
         background-color: hsla(0, 0%, 10%, 1);
         border: none;
         border-radius: 4px;
         transition: 0.2s;
+        border: 1px solid white;
     }
 
 
     &__schedule-open:hover {
         @include link-hover;
         background-color: black;
+        box-shadow: 0 0 5px;
     }
 
     &__schedule-icon {
@@ -146,9 +154,7 @@
         width: 100%;
         margin-bottom: 1rem;
         border-radius: 0.5rem;
-        box-shadow: 0 0 10px white;
-
-
+        box-shadow: 0 0 10px black;
     }
 
     &__schedule-div--inactive {
@@ -230,11 +236,15 @@
         gap: 0.5rem;
         transition: 0.2s;
         background-color: #e5e5e5;
+        border-radius: 4px;
+        border: none;
+        outline: none;
     }
 
     &__button:hover {
         @include link-hover;
         color: black;
+        
     }
 
     &__button--secondary {
@@ -243,6 +253,12 @@
 
     &__button--primary {
         width: 70%;
+        background-color: $main;
+        transition: 0.2s;
+    }
+
+    &__button--primary:hover {
+        background-color: $mainhover;
     }
 }
 

@@ -1,7 +1,8 @@
 import { useEffect, useState, useRef } from 'react';
 import axios from "axios";
 import './Gyms.scss'
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 
 
 function Gyms() {
@@ -11,6 +12,8 @@ function Gyms() {
     const [gymsNear, setGymsNear] = useState([]);
     const [newZip, setNewZip] = useState(null)
     const location = useLocation();
+    const navigate = useNavigate();
+    const [cookies, setCooikes] = useCookies(['access_token'])
     let zip;
     if (!newZip) {
         zip = location.state ? location.state.zip : '';
@@ -24,10 +27,12 @@ function Gyms() {
                 const within = [];
                 const near = [];
                 const data = response.data;
+                console.log(data)
                 for (let i = 0; i < data.length; i++) {
-                    if (data[i].zip === zip) {
+                    if (data[i].zip === zip && data[i].isApproved) {
                         within.push(data[i]);
                     } else if (
+                        data[i].isApproved &&
                         zip &&
                         zip.length >= 2 &&
                         data[i].zip &&
@@ -78,6 +83,7 @@ function Gyms() {
             <section className="gyms">
                 
                 <div className="gyms__header">
+                    <img className='gyms__profile' src={require('../../images/profile.svg').default} onClick={()=>{cookies.access_token ? navigate("/") : navigate("/enter") }}/>
                     <form className="gyms__search-div" onSubmit={findGym} ref={formRef}>
                         <input className="gyms__search-bar" id="zip" type="text" maxLength="5" minLength='5' placeholder="search by zip code..." />
                         <button  className="gyms__search-button">🔍</button>
@@ -93,7 +99,7 @@ function Gyms() {
                                     <Link key={gym._id} to={direction}>
                                         <div className='gyms__container' key={gym.id}>
                                         <div className='gyms__top'>
-                                                <img className='gyms__logo' src={gym.logo} alt="gym logo" />
+                                                <img className='gyms__logo' src={gym.logo == "" ? require("../../images/defaultlogo.jpeg") : gym.logo} alt="gym logo" />
                                                 <div className='gyms__bottom'>
                                                     <h3 className='gyms__name'>{gym.name}</h3>
                                                     <p className='gyms__address'>{gym.street}</p>
@@ -115,7 +121,7 @@ function Gyms() {
                                     <Link key={gym._id} to={direction}>
                                     <div className='gyms__container' key={gym.id}>
                                     <div className='gyms__top'>
-                                            <img className='gyms__logo' src={gym.logo} alt="gym logo" />
+                                            <img className='gyms__logo' src={gym.logo == "" ? require("../../images/defaultlogo.jpeg") : gym.logo} alt="gym logo" />
                                             <div className='gyms__bottom'>
                                                 <h3 className='gyms__name'>{gym.name}</h3>
                                                 <p className='gyms__address'>{gym.street}</p>

@@ -1,11 +1,14 @@
-import './Enter.scss'
+import './Register.scss'
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useCookies } from 'react-cookie';
 
-function Enter() {
+function Register() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [cookies, setCookies] = useCookies(['access_token'])
+    const navigate = useNavigate();
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -13,6 +16,17 @@ function Enter() {
           .post('http://localhost:3001/auth/register', { username, password })
           .then((response) => {
             alert('Registered successfully!');
+            axios
+          .post('http://localhost:3001/auth/login', { username, password })
+          .then((response) => {
+            window.localStorage.setItem("userID", response.data.userID)
+            setCookies("access_token", response.data.token)
+            navigate("/add")
+          })
+          .catch((error) => {
+            console.log(error);
+            alert('Login failed. Please try again.');
+          });
           })
           .catch((error) => {
             console.log(error);
@@ -38,12 +52,17 @@ function Enter() {
             
             <div className='enter__bottom'>
                 <p className='enter__dev-info'>Already have an account? <Link className='enter__login' to={'/login'}>Log In!</Link></p>
-                    <button className="enter__button">
+                  <div className='enter__buttons'>
+                  <button className="enter__button enter__secondary" onClick={() => {navigate("/")}}>
+                        Back
+                    </button>
+                    <button className="enter__button enter__primary">
                         Register
                     </button>
+                    </div>
             </div>
         </form>
     </section>
 }
 
-export default Enter;
+export default Register;

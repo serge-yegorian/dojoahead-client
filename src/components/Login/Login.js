@@ -19,16 +19,16 @@ function Login() {
           .then((response) => {
             window.localStorage.setItem("userID", response.data.userID)
             setCookies("access_token", response.data.token)
-            navigate("/")
+            navigate("/add")
           })
           .catch((error) => {
             console.log(error);
-            alert('Registration failed. Please try again.');
+            alert('Login failed. Please try again.');
           });
       };
 
     return <section className="enter">
-        <form className="enter__form" onSubmit={onSubmit}>
+        <form className="enter__form" method="POST" action="javascript:void(0)">
             <div className='enter__content'>
                 <h1 className='enter__signup'>Log In</h1>
                 <div className='enter__input-fields'>
@@ -45,9 +45,15 @@ function Login() {
             
             <div className='enter__bottom'>
                 <p className='enter__dev-info'>Do not have an account? <Link className='enter__login' to={'/enter'}>Register</Link></p>
-                    <button className="enter__button">
+                <div className='enter__buttons'>
+                    <button type='button' className="enter__button enter__secondary" onClick={() => {navigate("/")}}>
+                        Back
+                    </button>
+                    <button className="enter__button enter__primary" onClick={onSubmit}>
                         Log In
                     </button>
+                </div>
+                    
             </div>
         </form>
     </section>

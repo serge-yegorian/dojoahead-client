@@ -34,8 +34,8 @@
     }
 
     &__container:hover {
-        box-shadow: 0 0 5px white;
-        border: 1px solid white;
+        box-shadow: 0 0 10px $mainhover;
+        border: 1px solid $mainhover;
     }
 
     &__container:hover &__address, &__container:hover &__name {
@@ -47,20 +47,27 @@
         background-color: hsla(0, 0%, 10%, 1);
         border-top-left-radius: 4px;
         border-top-right-radius: 4px;
+        margin-bottom: -3.5px;
     }
 
     &__header {
-        padding: 1rem;
+        padding: 1rem 1rem 2rem;
         width: 100%;
         display: flex;
-        justify-content: center        
-
+        justify-content: center;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        border-bottom: 2px solid white;
+        background-color: $secondary;     
+        gap: 0 0.5rem;
     }
 
     &__name {
         @include gym-name;
         margin-bottom: 1rem;
         color: #e5e5e5;
+        border-radius: 4px;
     }
 
     &__address {
@@ -77,7 +84,20 @@
 
     &__search-div {
         display: flex;
-        width: 100%;
+        flex-grow: 2;
+    }
+
+    &__profile {
+        height: 2rem;
+        background-color: white;
+        border-radius: 50%;
+        padding: 0.2rem;
+        transition: 0.2s;
+        cursor: pointer;
+    }
+
+    &__profile:hover {
+        box-shadow: 0 0 10px white;
     }
 
     &__search-bar {
@@ -90,16 +110,29 @@
         transition: 0.2s;
         background-color: #e5e5e5;
         width: 80%;
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+    }
+
+    &__search-bar:hover{
+        background-color: white;
     }
 
     &__search-button {
         border: none;
         padding: 0 1rem;
-        background-color: #e5e5e5;
+        background-color: $main;
         border-left: 2px solid black;
         font-size: 1.2rem;
         cursor: pointer;
         width: 20%;
+        transition: 0.2s;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
+
+    &__search-button:hover {
+        background-color: $mainhover
     }
 
     &__description {
@@ -131,6 +164,8 @@
     &__bottom {
         padding: 1rem;
         background-color: hsla(0, 0, 30%, 1);
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
     }
 
     &__array {

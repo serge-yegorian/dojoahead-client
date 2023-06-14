@@ -15,6 +15,7 @@ const AddMedia = () => {
     const insta = formRef.current.insta.value;
     const smoothcomp = formRef.current.smoothcomp.value;
     const website = formRef.current.website.value;
+    const tapology = formRef.current.tapology.value;
     e.preventDefault();
     axios
       .post("http://localhost:3001/gyms/updatemedialinks", {
@@ -22,7 +23,8 @@ const AddMedia = () => {
         fb,
         insta,
         smoothcomp,
-        website
+        website,
+        tapology
       })
       .then((res) => {
         console.log(res.data)
@@ -71,6 +73,18 @@ const AddMedia = () => {
                             type="text"
                             placeholder="https://facebook.com"
                         />
+                    </div>
+                    <div className="add__field">
+                      <label className="add__label" htmlFor="tapology">
+                        Tapology:
+                      </label>
+                      <input
+                        className="add__input"
+                        id="tapology"
+                        name="tapology"
+                        type="text"
+                        placeholder="https://tapology.com"
+                      />
                     </div>
                     <div className="add__field">
                         <label className="add__label" htmlFor="insta">

@@ -1,19 +1,13 @@
 import axios from "axios";
-import "../AddGym.scss";
-import { useRef, useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import "./EditGym.scss";
+import { useRef } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
-const AddImages = () => {
+const EditImages = () => {
   const formRef = useRef();
   const navigate = useNavigate();
   const location = useLocation();
-  const [file, setFile] = useState('')
   const { gymId } = location.state;
-  console.log(gymId)
-
-  const next = () => {
-    navigate(`/addmedialinks`, { state: { gymId } })
-  }
 
     const selectLogo = (e) => {
         e.preventDefault();
@@ -75,8 +69,8 @@ const AddImages = () => {
             type="button"
             onClick={() => document.getElementById("logo").click()}
           >
-            
-            📎 Logo
+            <span className="material-symbols-outlined icon">upload_file</span>
+            Logo
           </button>
         </div>
 
@@ -94,8 +88,8 @@ const AddImages = () => {
             type="button"
             onClick={() => document.getElementById("background").click()}
           >
-
-            📎 Background
+            <span className="material-symbols-outlined icon">upload_file</span>
+            Background
           </button>
         </div>
         <div className="add__field add__field--image">
@@ -112,22 +106,22 @@ const AddImages = () => {
             type="button"
             onClick={() => document.getElementById("schedule").click()}
           >
-
-📎 Schedule
+            <span className="material-symbols-outlined icon">upload_file</span>
+            Schedule
           </button>
         </div>
       </div>
       <div className="add__buttons">
-        <Link to="/" className="add__cancel">
+      <button to="/" className="add__cancel" onClick={()=>{navigate(-1)}}>
           Cancel
-        </Link>
+        </button>
 
-        <button className="add__submit" type="submit" onClick={next}>
-          Next
+        <button className="add__submit" type="button" onClick={()=>{navigate(-1)}}>
+          Update
         </button>
       </div>
     </form>
   );
 };
 
-export default AddImages;
+export default EditImages;

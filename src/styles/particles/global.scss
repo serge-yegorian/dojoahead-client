@@ -5,23 +5,6 @@
     text-decoration: none;
 }
 
-body {
-  min-height: 100vh;
-  background-color: #333;
-}
-
-.material-symbols-outlined {
-  font-size: 1rem;
-}
-
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
+$secondary: #101820;
+$mainhover: #f6be00;
+$main: #EDB007

@@ -1,48 +1,31 @@
 import axios from "axios";
-import "./AddGym.scss";
-import { useState, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import "./EditGym.scss";
+import { useRef } from "react";
+import {useNavigate, useLocation } from "react-router-dom";
 
-function AddGym() {
-  const navigate = useNavigate();
-
-  const userID = window.localStorage.getItem("userID");
-
-  const [gym, setGym] = useState({
-    name: "",
-    bio: "",
-    email: "",
-    phoneNumber: "",
-    street: "",
-    city: "",
-    zip: "",
-    logo: "",
-    background: "",
-    schedule: "",
-    website: "",
-    fb: "",
-    insta: "",
-    tapology: "",
-    smoothcomp: "",
-    gymOwner: userID,
-  });
-
-  const [gymId, setGymId] = useState("");
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setGym({ ...gym, [name]: value });
-  };
+function EditGym() {
+    const formRef = useRef();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const {gymId} = location.state
 
   const onSubmit = (e) => {
+    const name = formRef.current.name.value;
+    const bio = formRef.current.bio.value;
+    const phoneNumber = formRef.current.phoneNumber.value;
+    const email = formRef.current.email.value;
     e.preventDefault();
     axios
-      .post("http://localhost:3001/gyms", gym)
+      .post("http://localhost:3001/gyms/updategym", {
+        id: gymId,
+        name,
+        bio,
+        phoneNumber,
+        email
+      })
       .then((res) => {
-        const generatedId = res.data._id;
-        setGymId(generatedId);
-        alert("Keep adding more information about your gym! Then it will be reviewed within the next 24 hours");
-        navigate("/addaddress", { state: { gymId: generatedId } });
+        console.log(res.data)
+        navigate(-1);
       })
       .catch((err) => {
         console.log(err);
@@ -52,13 +35,13 @@ function AddGym() {
   console.log(gymId);
 
   return (
-    <form className="add" onSubmit={onSubmit}>
+    <form className="add" onSubmit={onSubmit} ref={formRef}>
       <div className="">
         <h2 className="add__subheading">Publish Your Gym:</h2>
         <div className="add__content">
           <div className="add__field">
             <label className="add__label" htmlFor="name">
-              Gym name:*
+              Gym name:
             </label>
             <input
               className="add__input"
@@ -66,13 +49,12 @@ function AddGym() {
               name="name"
               type="text"
               placeholder="10th Planet "
-              onChange={handleChange}
               required={true}
             />
           </div>
           <div className="add__field">
             <label className="add__label" htmlFor="email">
-              Gym email:*
+              Gym email:
             </label>
             <input
               className="add__input"
@@ -80,13 +62,12 @@ function AddGym() {
               name="email"
               type="email"
               placeholder="dojo@gmail.com"
-              onChange={handleChange}
               required={true}
             />
           </div>
           <div className="add__field">
             <label className="add__label" htmlFor="phoneNumber">
-              Gym phone number:*
+              Gym phone number:
             </label>
             <input
               className="add__input"
@@ -96,20 +77,18 @@ function AddGym() {
               maxLength="10"
               minLength="10"
               placeholder="561 000 0561 (no dashes or spaces)"
-              onChange={handleChange}
               required={true}
             />
           </div>
           <div className="add__field">
             <label className="add__label" htmlFor="bio">
-              Gym bio:*
+              Gym bio:
             </label>
             <textarea
               className="add__input add__input--textarea"
               id="bio"
               name="bio"
               placeholder="We have 4 IBJJF champions and crossfit area"
-              onChange={handleChange}
               required={true}
               maxLength={350}
             ></textarea>
@@ -117,16 +96,16 @@ function AddGym() {
         </div>
       </div>
       <div className="add__buttons">
-        <Link to="/" className="add__cancel">
+        <button to="/" className="add__cancel" onClick={()=>{navigate(-1)}}>
           Cancel
-        </Link>
+        </button>
 
         <button className="add__submit" type="submit">
-          Next
+          Update
         </button>
       </div>
     </form>
   );
 }
 
-export default AddGym;
+export default EditGym;

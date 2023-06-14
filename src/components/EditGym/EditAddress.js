@@ -1,9 +1,9 @@
 import axios from "axios";
-import "../AddGym.scss";
+import "./EditGym.scss";
 import { useRef } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import {useNavigate, useLocation } from "react-router-dom";
 
-const AddAddress = () => {
+const EditAddress = () => {
   const formRef = useRef();
   const navigate = useNavigate();
   const location = useLocation();
@@ -23,7 +23,7 @@ const AddAddress = () => {
       })
       .then((res) => {
         console.log(res.data)
-        navigate("/addimages", { state: { gymId } });
+        navigate(-1);
       })
       .catch((err) => {
         console.log(err);
@@ -71,16 +71,16 @@ const AddAddress = () => {
       </div>
 
       <div className="add__buttons">
-        <Link to="/" className="add__cancel">
+        <button to="/" className="add__cancel" onClick={()=>{navigate(-1)}}>
           Cancel
-        </Link>
+        </button>
 
         <button className="add__submit" type="submit">
-          Next
+          Update
         </button>
       </div>
     </form>
   );
 };
 
-export default AddAddress;
+export default EditAddress;
