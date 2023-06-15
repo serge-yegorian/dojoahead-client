@@ -44,13 +44,7 @@ const EditImages = () => {
         formData.append("upload_preset", "ml_default")
         axios.post('http://localhost:3001/gyms/schedule', formData)
     };
-
-
-  
-
-
-
-  
+    
   return (
     <form className="add" ref={formRef} encType="multipart/form-data">
       <div className="add__content">
@@ -69,8 +63,8 @@ const EditImages = () => {
             type="button"
             onClick={() => document.getElementById("logo").click()}
           >
-            <span className="material-symbols-outlined icon">upload_file</span>
-            Logo
+
+📎 Logo
           </button>
         </div>
 
@@ -88,8 +82,8 @@ const EditImages = () => {
             type="button"
             onClick={() => document.getElementById("background").click()}
           >
-            <span className="material-symbols-outlined icon">upload_file</span>
-            Background
+
+📎 Background
           </button>
         </div>
         <div className="add__field add__field--image">
@@ -106,8 +100,8 @@ const EditImages = () => {
             type="button"
             onClick={() => document.getElementById("schedule").click()}
           >
-            <span className="material-symbols-outlined icon">upload_file</span>
-            Schedule
+
+📎 Schedule
           </button>
         </div>
       </div>

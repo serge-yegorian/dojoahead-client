@@ -14,6 +14,7 @@ import EditAddress from './components/EditGym/EditAddress';
 import EditImages from './components/EditGym/EditMediaFiles';
 import EditMediaLinks from './components/EditGym/EditMediaLinks';
 import EditGym from './components/EditGym/EditGym';
+import Profile from './components/Profile/Profile';
 
 function App() {
 
@@ -46,6 +47,7 @@ function App() {
           <Route path='/editmediafiles' element={<EditImages/>}/>
           <Route path='/editmedialinks' element={<EditMediaLinks/>}/>
           <Route path='/editgym' element={<EditGym/>}/>
+          { !cookies.access_token || cookies.access_token.length < 10 ? <Route path='/profile' element={<Login/>}/> : <Route path='/profile' element={<Profile/>}/>}
         </Routes>
       </main>
     </BrowserRouter>

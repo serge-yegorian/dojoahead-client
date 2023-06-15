@@ -60,6 +60,7 @@ function Gyms() {
             <div className='gyms__error'>
             <div className='gyms__loading'>
                 <div className="gyms__header">
+                <img className='gyms__profile' src={require('../../images/profile.svg').default} onClick={()=>{cookies.access_token != undefined && cookies.access_token ? navigate("/profile") : navigate("/enter") }}/>
                     <form className="gyms__search-div" onSubmit={findGym} ref={formRef}>
                         <input className="gyms__search-bar" id="zip" type="text" maxLength="5" minLength='5' placeholder="search by zip code..." />
                         <button  className="gyms__search-button">🔍</button>
@@ -83,7 +84,7 @@ function Gyms() {
             <section className="gyms">
                 
                 <div className="gyms__header">
-                    <img className='gyms__profile' src={require('../../images/profile.svg').default} onClick={()=>{cookies.access_token ? navigate("/") : navigate("/enter") }}/>
+                    <img className='gyms__profile' src={require('../../images/profile.svg').default} onClick={()=>{cookies.access_token != undefined && cookies.access_token ? navigate("/profile") : navigate("/enter") }}/>
                     <form className="gyms__search-div" onSubmit={findGym} ref={formRef}>
                         <input className="gyms__search-bar" id="zip" type="text" maxLength="5" minLength='5' placeholder="search by zip code..." />
                         <button  className="gyms__search-button">🔍</button>

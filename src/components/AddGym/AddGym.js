@@ -1,7 +1,7 @@
 import axios from "axios";
 import "./AddGym.scss";
-import { useState, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function AddGym() {
   const navigate = useNavigate();
@@ -117,9 +117,9 @@ function AddGym() {
         </div>
       </div>
       <div className="add__buttons">
-        <Link to="/" className="add__cancel">
+        <button type="button" onClick={()=>{navigate(-1)}} className="add__cancel">
           Cancel
-        </Link>
+        </button>
 
         <button className="add__submit" type="submit">
           Next

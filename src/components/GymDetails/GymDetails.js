@@ -12,7 +12,7 @@ function GymDetails() {
   const gymId = id;
 
   const goBack = () => {
-    navigate("/gyms");
+    navigate(-1);
   }
 
   const openContacts = () => {

@@ -19,7 +19,7 @@ function Login() {
           .then((response) => {
             window.localStorage.setItem("userID", response.data.userID)
             setCookies("access_token", response.data.token)
-            navigate("/add")
+            navigate("/profile")
           })
           .catch((error) => {
             console.log(error);
