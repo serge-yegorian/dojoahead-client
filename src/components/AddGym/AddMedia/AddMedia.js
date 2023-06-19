@@ -18,7 +18,7 @@ const AddMedia = () => {
     const tapology = formRef.current.tapology.value;
     e.preventDefault();
     axios
-      .post("http://localhost:3001/gyms/updatemedialinks", {
+      .post("https://dojoahead.onrender.com/gyms/updatemedialinks", {
         id: gymId,
         fb,
         insta,

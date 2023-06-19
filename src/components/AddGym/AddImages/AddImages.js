@@ -24,7 +24,7 @@ const AddImages = () => {
         formData.append("logo", file);
         formData.append("gymId", gymId);
         formData.append("upload_preset", "ml_default")
-        axios.post('http://localhost:3001/gyms/logo', formData)
+        axios.post('https://dojoahead.onrender.com/gyms/logo', formData)
     };
 
     const selectBackground = (e) => {
@@ -36,7 +36,7 @@ const AddImages = () => {
         formData.append("background", file);
         formData.append("gymId", gymId);
         formData.append("upload_preset", "ml_default")
-        axios.post('http://localhost:3001/gyms/background', formData)
+        axios.post('https://dojoahead.onrender.com/gyms/background', formData)
     };
 
     const selectSchedule = (e) => {
@@ -48,7 +48,7 @@ const AddImages = () => {
         formData.append("schedule", file);
         formData.append("gymId", gymId);
         formData.append("upload_preset", "ml_default")
-        axios.post('http://localhost:3001/gyms/schedule', formData)
+        axios.post('https://dojoahead.onrender.com/gyms/schedule', formData)
     };
 
 

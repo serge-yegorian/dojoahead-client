@@ -15,7 +15,7 @@ const EditAddress = () => {
     const zip = formRef.current.zip.value;
     e.preventDefault();
     axios
-      .post("http://localhost:3001/gyms/updateaddress", {
+      .post("https://dojoahead.onrender.com/gyms/updateaddress", {
         id: gymId,
         street,
         city,

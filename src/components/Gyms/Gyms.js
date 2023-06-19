@@ -22,7 +22,7 @@ function Gyms() {
     }
 
     useEffect(() => {
-        axios.get('http://localhost:3001/gyms')
+        axios.get('https://dojoahead.onrender.com/gyms')
             .then((response) => {
                 const within = [];
                 const near = [];

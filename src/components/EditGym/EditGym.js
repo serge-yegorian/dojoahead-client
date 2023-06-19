@@ -16,7 +16,7 @@ function EditGym() {
     const email = formRef.current.email.value;
     e.preventDefault();
     axios
-      .post("http://localhost:3001/gyms/updategym", {
+      .post("https://dojoahead.onrender.com/gyms/updategym", {
         id: gymId,
         name,
         bio,

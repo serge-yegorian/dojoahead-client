@@ -7,7 +7,7 @@ function GymDetails() {
   const { id } = useParams();
   const [data, setData] = useState({});
   const [open, setOpen] = useState(false)
-  const endpoint = 'http://localhost:3001/gyms/';
+  const endpoint = 'https://dojoahead.onrender.com/gyms/';
   const navigate = useNavigate();
   const gymId = id;
 

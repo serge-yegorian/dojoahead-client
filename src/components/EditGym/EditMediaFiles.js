@@ -18,7 +18,7 @@ const EditImages = () => {
         formData.append("logo", file);
         formData.append("gymId", gymId);
         formData.append("upload_preset", "ml_default")
-        axios.post('http://localhost:3001/gyms/logo', formData)
+        axios.post('https://dojoahead.onrender.com/gyms/logo', formData)
     };
 
     const selectBackground = (e) => {
@@ -30,7 +30,7 @@ const EditImages = () => {
         formData.append("background", file);
         formData.append("gymId", gymId);
         formData.append("upload_preset", "ml_default")
-        axios.post('http://localhost:3001/gyms/background', formData)
+        axios.post('https://dojoahead.onrender.com/gyms/background', formData)
     };
 
     const selectSchedule = (e) => {
@@ -42,9 +42,9 @@ const EditImages = () => {
         formData.append("schedule", file);
         formData.append("gymId", gymId);
         formData.append("upload_preset", "ml_default")
-        axios.post('http://localhost:3001/gyms/schedule', formData)
+        axios.post('https://dojoahead.onrender.com/gyms/schedule', formData)
     };
-    
+
   return (
     <form className="add" ref={formRef} encType="multipart/form-data">
       <div className="add__content">

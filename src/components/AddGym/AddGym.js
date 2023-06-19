@@ -37,11 +37,11 @@ function AddGym() {
   const onSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3001/gyms", gym)
+      .post("https://dojoahead.onrender.com/gyms", gym)
       .then((res) => {
         const generatedId = res.data._id;
         setGymId(generatedId);
-        alert("Keep adding more information about your gym! Then it will be reviewed within the next 24 hours");
+        alert("Keep adding information about your gym! It will be reviewed within the next 24 hours");
         navigate("/addaddress", { state: { gymId: generatedId } });
       })
       .catch((err) => {
