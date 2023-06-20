@@ -102,6 +102,7 @@ const EditMediaLinks = () => {
         <button
           to="/"
           className="add__cancel"
+          type="button"
           onClick={() => {
             navigate(-1);
           }}
