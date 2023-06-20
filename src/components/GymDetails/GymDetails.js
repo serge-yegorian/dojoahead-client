@@ -1,7 +1,7 @@
 import './GymDetails.scss';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, useNavigate, useLocation} from 'react-router-dom';
 
 function GymDetails() {
   const { id } = useParams();
@@ -10,9 +10,12 @@ function GymDetails() {
   const endpoint = 'https://dojoahead.onrender.com/gyms/';
   const navigate = useNavigate();
   const gymId = id;
+  const location = useLocation();
+  const {state} = location;
+  console.log(state)
 
   const goBack = () => {
-    navigate(-1);
+    state && state.justAdded ? navigate('/profile') : navigate(-1);
   }
 
   const openContacts = () => {

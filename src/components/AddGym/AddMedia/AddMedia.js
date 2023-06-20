@@ -28,7 +28,7 @@ const AddMedia = () => {
       })
       .then((res) => {
         console.log(res.data)
-        navigate(`/gyms/${gymId}`, { state: { gymId } });
+        navigate(`/gyms/${gymId}`, { state: { gymId, justAdded: true } });
       })
       .catch((err) => {
         console.log(err);

@@ -96,7 +96,7 @@ function EditGym() {
         </div>
       </div>
       <div className="add__buttons">
-        <button to="/" className="add__cancel" onClick={()=>{navigate(-1)}}>
+        <button to="/" type="button" className="add__cancel" onClick={()=>{navigate(-1)}}>
           Cancel
         </button>
 
