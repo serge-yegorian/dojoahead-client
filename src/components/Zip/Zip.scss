@@ -94,5 +94,9 @@
     &__signup:hover {
         @include link-hover;
     }
+
+    &__dojoahead {
+        color: $main;
+    }
     
 }

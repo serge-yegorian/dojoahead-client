@@ -22,29 +22,39 @@ function Gyms() {
     }
 
     useEffect(() => {
-        axios.get('https://dojoahead.onrender.com/gyms')
-            .then((response) => {
-                const within = [];
-                const near = [];
-                const data = response.data;
-                console.log(data)
-                for (let i = 0; i < data.length; i++) {
-                    if (data[i].zip === zip && data[i].isApproved) {
-                        within.push(data[i]);
-                    } else if (
-                        data[i].isApproved &&
-                        zip &&
-                        zip.length >= 2 &&
-                        data[i].zip &&
-                        data[i].zip.startsWith(zip.substring(0, 2))
-                    ) {
-                        near.push(data[i]);
-                    }
-                }
-                setGymsWithin(within);
-                setGymsNear(near);
-            });
-    }, [zip]);
+        axios.get('https://dojoahead.onrender.com/gyms', {
+          params: {
+            zip: zip // Pass the zip code as a query parameter
+          }
+        })
+          .then((response) => {
+            const data = response.data;
+            const within = [];
+            const near = [];
+      
+            for (let i = 0; i < data.length; i++) {
+              if (data[i].zip === zip && data[i].isApproved) {
+                within.push(data[i]);
+              } else if (
+                zip &&
+                zip.length >= 2 &&
+                data[i].zip &&
+                data[i].zip.startsWith(zip.substring(0, 2)) &&
+                data[i].isApproved
+              ) {
+                near.push(data[i]);
+              }
+            }
+      
+            setGymsWithin(within);
+            setGymsNear(near);
+          })
+          .catch((error) => {
+            console.log(error)
+          });
+      }, [zip]);
+      
+      
 
     if (!(gymsWithin.length > 0) && !(gymsNear.length > 0)) {
 
