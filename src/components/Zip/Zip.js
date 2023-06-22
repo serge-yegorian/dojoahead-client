@@ -31,10 +31,16 @@ function Zip() {
             onChange={(e) => setZip(e.target.value)}
           />
           <p className='zip__description'>
-            Check local martial&nbsp;arts&nbsp;gyms&nbsp;📍 <br/><br/>
+            Welcome to <span className='zip__dojoahead'>dojoahead</span> 🥋
+            <br />
+            <br />
+            Find best local martial&nbsp;arts&nbsp;gym&nbsp;📍
+            <br />
+            <br />
             App works only in&nbsp;the&nbsp;US&nbsp;🇺🇸 
             <br />
             <br />
+
           </p>
         </div>
         <div className='zip__bottom'>
