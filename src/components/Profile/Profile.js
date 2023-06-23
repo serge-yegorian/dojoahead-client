@@ -16,7 +16,7 @@ function Profile() {
   }
 
   useEffect(() => {
-    axios.get("https://dojoahead.onrender.com/gyms/byzip").then((response) => {
+    axios.get("https://dojoahead.onrender.com/gyms/").then((response) => {
       const data = response.data;
       const userId = window.localStorage.getItem("userID");
       const gymsOwned = data.filter((gym) => gym.gymOwner === userId);
