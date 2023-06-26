@@ -3,10 +3,11 @@
 
 .gymdetails {
     position: relative;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    min-height: 90vh;
+
 
     &__button--edit {
         margin-bottom: 2rem;
@@ -183,6 +184,7 @@
         align-items: center;
         justify-content: space-between;
         padding: 0 2rem;
+        padding-bottom: 2rem;
     }
 
     &__website {
@@ -221,12 +223,17 @@
     &__buttons {
         display: flex;
         align-items: center;
-        padding: 1.5rem;
+        padding: 1rem;
         gap: 0 1rem;
+        position: sticky;
+        bottom: 0;
+        background-color: #101820;
+        border-top: 2px solid white;
+
     }
 
     &__button {
-        height: 3rem;
+        height: 2rem;
         font-size: 2rem;
         @include link;
         color: black;
@@ -260,6 +267,7 @@
     &__button--primary:hover {
         background-color: $mainhover;
     }
+
 }
 
 

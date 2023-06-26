@@ -5,6 +5,13 @@
     text-decoration: none;
 }
 
+
 $secondary: #101820;
 $mainhover: #f6be00;
-$main: #EDB007
+$main: #EDB007;
+
+@mixin tablet {
+    @media (min-width: 401px) {
+        @content;
+    }
+}

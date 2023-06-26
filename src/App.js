@@ -1,34 +1,24 @@
 import { Route, BrowserRouter, Routes  } from 'react-router-dom';
-import './App.css';
-import Zip from './components/Zip/Zip';
-import Gyms from './components/Gyms/Gyms';
-import GymDetails from './components/GymDetails/GymDetails';
-import AddGym from './components/AddGym/AddGym';
-import Login from './components/Login/Login';
-import AddAddress from './components/AddGym/AddAddress/AddAddress';
+import './App.scss';
+import Zip from './pages/Zip/Zip';
+import Gyms from './pages/Gyms/Gyms';
+import GymDetails from './pages/GymDetails/GymDetails';
+import AddGym from './pages/AddGym/AddGym';
+import Login from './pages/Login/Login';
+import AddAddress from './pages/AddGym/AddAddress/AddAddress';
 import { useCookies } from 'react-cookie';
-import AddImages from './components/AddGym/AddImages/AddImages';
-import AddMedia from './components/AddGym/AddMedia/AddMedia';
-import Register from './components/Register/Register';
-import EditAddress from './components/EditGym/EditAddress';
-import EditImages from './components/EditGym/EditMediaFiles';
-import EditMediaLinks from './components/EditGym/EditMediaLinks';
-import EditGym from './components/EditGym/EditGym';
-import Profile from './components/Profile/Profile';
+import AddImages from './pages/AddGym/AddImages/AddImages';
+import AddMedia from './pages/AddGym/AddMedia/AddMedia';
+import Register from './pages/Register/Register';
+import EditAddress from './pages/EditGym/EditAddress';
+import EditImages from './pages/EditGym/EditMediaFiles';
+import EditMediaLinks from './pages/EditGym/EditMediaLinks';
+import EditGym from './pages/EditGym/EditGym';
+import Profile from './pages/Profile/Profile';
 
 function App() {
 
   const [cookies, setCooikes] = useCookies(['access_token'])
-
-  const logout = () => {
-    setCooikes("access_token", "");
-    window.localStorage.removeItem('userID');
-    // navigate back to login
-  }
-
-  console.log(cookies.access_token)
-
-  
 
   return (
     <BrowserRouter>
