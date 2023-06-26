@@ -1,5 +1,5 @@
 import { Route, BrowserRouter, Routes  } from 'react-router-dom';
-import './App.css';
+import './App.scss';
 import Zip from './pages/Zip/Zip';
 import Gyms from './pages/Gyms/Gyms';
 import GymDetails from './pages/GymDetails/GymDetails';
@@ -19,16 +19,6 @@ import Profile from './pages/Profile/Profile';
 function App() {
 
   const [cookies, setCooikes] = useCookies(['access_token'])
-
-  const logout = () => {
-    setCooikes("access_token", "");
-    window.localStorage.removeItem('userID');
-    // navigate back to login
-  }
-
-  console.log(cookies.access_token)
-
-  
 
   return (
     <BrowserRouter>

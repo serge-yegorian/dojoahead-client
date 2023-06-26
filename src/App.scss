@@ -1,0 +1,37 @@
+@use '../src/styles/particles/global.scss' as *; 
+@use '../src/styles/particles/fonts.scss' as *;
+
+html {
+  background-color: #101820;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include tablet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 0 2rem;
+  }
+}
+
+main {
+    min-height: 100vh;
+    max-width: 400px;
+    margin: 0 auto;
+    position: relative;
+    max-width: 400px;
+    @include tablet {
+      height: 90vh;
+      min-height: 90vh;
+      overflow-y: auto;
+      border: 2px solid white;
+      box-shadow: 0 0 10px white;
+      border-radius: 1rem;
+      scroll-padding-bottom: 80vh;
+    }
+ 
+}
