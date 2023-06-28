@@ -17,7 +17,7 @@ function Profile() {
   }
 
   useEffect(() => {
-    axios.get("http://localhost:3001/gyms/user/" + userId)
+    axios.get("https://dojoahead.onrender.com/gyms/user/" + userId)
       .then((response) => {
         setGymsWithin(response.data);
       })
