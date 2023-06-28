@@ -5,24 +5,26 @@ import { Link, useNavigate } from "react-router-dom";
 import { useCookies } from 'react-cookie';
 
 function Profile() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [gymsWithin, setGymsWithin] = useState([]);
   const [cookies, setCooikes] = useCookies(['access_token'])
+  const userId = window.localStorage.getItem('userID');
 
   const logout = () => {
     setCooikes("access_token", "");
     window.localStorage.removeItem('userID');
-    navigate(-1)
+    navigate('/gyms')
   }
 
   useEffect(() => {
-    axios.get("https://dojoahead.onrender.com/gyms/").then((response) => {
-      const data = response.data;
-      const userId = window.localStorage.getItem("userID");
-      const gymsOwned = data.filter((gym) => gym.gymOwner === userId);
-      setGymsWithin(gymsOwned);
-    });
-  }, []);
+    axios.get("http://localhost:3001/gyms/user/" + userId)
+      .then((response) => {
+        setGymsWithin(response.data);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch gyms:", error);
+      });
+  }, [userId]);
 
   return (
     <section className="profile">
