@@ -5,6 +5,10 @@
     height: 80vh;
     padding: 2rem;
     min-height: 100vh;
+    @include tablet {
+        height: 80vh;
+        min-height: initial
+    }
 
     &__signup {
         @include header;

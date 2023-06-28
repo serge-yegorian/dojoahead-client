@@ -34,7 +34,7 @@ function Zip() {
             Welcome to <span className='zip__dojoahead'>dojoahead</span> 🥋
             <br />
             <br />
-            Find best local martial&nbsp;arts&nbsp;gym&nbsp;📍
+            Find best martial&nbsp;arts&nbsp;gyms&nbsp;📍
             <br />
             <br />
             App works only in&nbsp;the&nbsp;US&nbsp;🇺🇸 

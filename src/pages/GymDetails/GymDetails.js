@@ -12,7 +12,6 @@
     const gymId = id;
     const location = useLocation();
     const {state} = location;
-    console.log(state)
 
     const goBack = () => {
       state && state.justAdded ? navigate('/profile') : navigate(-1);
@@ -50,7 +49,6 @@
     const deleteGym = () => {
       axios.delete(`${endpoint}${gymId}`)
       .then((response) => {
-        console.log(response.data)
         alert('Gym was deleted successfully!')
         navigate("/gyms")
       })
@@ -65,8 +63,6 @@
           setData(response.data);
         });
     }, []);
-
-    console.log(data)
 
     return (
       <div>
