@@ -2,7 +2,6 @@
 @use '../../styles/particles/fonts.scss' as *;
 
 .gyms {
-    min-height: 100vh;
     
 
     &__label {
@@ -45,8 +44,8 @@
     &__logo {
         width: 300px;
         background-color: hsla(0, 0%, 10%, 1);
-        border-top-left-radius: 4px;
-        border-top-right-radius: 4px;
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
         margin-bottom: -3.5px;
     }
 
@@ -153,8 +152,9 @@
 
     &__err-message {
         @include body;
+        text-align: center;
         position: relative;
-        bottom: 8rem;
+        top: 6rem;
     }
 
     &__results {
