@@ -15,7 +15,7 @@ const AddAddress = () => {
     const zip = formRef.current.zip.value;
     e.preventDefault();
     axios
-      .post("https://dojoahead.onrender.com/gyms/updateaddress", {
+      .post("https://starfish-app-2kjfy.ondigitalocean.app/gyms/updateaddress", {
         id: gymId,
         street,
         city,

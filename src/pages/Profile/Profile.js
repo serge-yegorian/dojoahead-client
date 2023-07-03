@@ -17,7 +17,7 @@ function Profile() {
   }
 
   useEffect(() => {
-    axios.get("https://dojoahead.onrender.com/gyms/user/" + userId)
+    axios.get("https://starfish-app-2kjfy.ondigitalocean.app/gyms/user/" + userId)
       .then((response) => {
         setGymsWithin(response.data);
       })

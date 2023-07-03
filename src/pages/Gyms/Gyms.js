@@ -17,7 +17,7 @@ function Gyms() {
 
   useEffect(() => {
     axios
-      .get('https://dojoahead.onrender.com/gyms/zip', {
+      .get('https://starfish-app-2kjfy.ondigitalocean.app/gyms/zip', {
         params: {
           zip: zip
         }

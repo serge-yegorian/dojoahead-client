@@ -37,7 +37,7 @@ function AddGym() {
   const onSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("https://dojoahead.onrender.com/gyms", gym)
+      .post("https://starfish-app-2kjfy.ondigitalocean.app/gyms", gym)
       .then((res) => {
         const generatedId = res.data._id;
         setGymId(generatedId);

@@ -17,7 +17,7 @@ const EditMediaLinks = () => {
     const tapology = formRef.current.tapology.value;
     e.preventDefault();
     axios
-      .post("https://dojoahead.onrender.com/gyms/updatemedialinks", {
+      .post("https://starfish-app-2kjfy.ondigitalocean.app/gyms/updatemedialinks", {
         id: gymId,
         fb,
         insta,

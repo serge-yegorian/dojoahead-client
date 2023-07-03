@@ -24,7 +24,7 @@ const AddImages = () => {
         formData.append("logo", file);
         formData.append("gymId", gymId);
         formData.append("upload_preset", "ml_default")
-        axios.post('https://dojoahead.onrender.com/gyms/logo', formData)
+        axios.post('https://starfish-app-2kjfy.ondigitalocean.app/gyms/logo', formData)
     };
 
     const selectBackground = (e) => {
@@ -36,7 +36,7 @@ const AddImages = () => {
         formData.append("background", file);
         formData.append("gymId", gymId);
         formData.append("upload_preset", "ml_default")
-        axios.post('https://dojoahead.onrender.com/gyms/background', formData)
+        axios.post('https://starfish-app-2kjfy.ondigitalocean.app/gyms/background', formData)
     };
 
     const selectSchedule = (e) => {
@@ -48,7 +48,7 @@ const AddImages = () => {
         formData.append("schedule", file);
         formData.append("gymId", gymId);
         formData.append("upload_preset", "ml_default")
-        axios.post('https://dojoahead.onrender.com/gyms/schedule', formData)
+        axios.post('https://starfish-app-2kjfy.ondigitalocean.app/gyms/schedule', formData)
     };
 
 

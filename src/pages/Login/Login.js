@@ -15,7 +15,7 @@ function Login() {
     const onSubmit = (e) => {
         e.preventDefault();
         axios
-          .post('https://dojoahead.onrender.com/auth/login', { username, password })
+          .post('https://starfish-app-2kjfy.ondigitalocean.app/auth/login', { username, password })
           .then((response) => {
             window.localStorage.setItem("userID", response.data.userID)
             setCookies("access_token", response.data.token)

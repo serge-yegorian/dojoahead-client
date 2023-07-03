@@ -7,7 +7,7 @@
     const { id } = useParams();
     const [data, setData] = useState({});
     const [open, setOpen] = useState(false)
-    const endpoint = 'https://dojoahead.onrender.com/gyms/';
+    const endpoint = 'https://starfish-app-2kjfy.ondigitalocean.app/gyms/';
     const navigate = useNavigate();
     const gymId = id;
     const location = useLocation();
