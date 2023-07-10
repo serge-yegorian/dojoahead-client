@@ -31,13 +31,16 @@ function Zip() {
             onChange={(e) => setZip(e.target.value)}
           />
           <p className='zip__description'>
-            Welcome to <span className='zip__dojoahead'>dojoahead</span> 🥋
+            Welcome to <span className='zip__dojoahead'>dojoahead</span>🥋 &#40;beta&#41;
             <br />
             <br />
             Find best martial&nbsp;arts&nbsp;gyms&nbsp;📍
             <br />
             <br />
-            App works only in&nbsp;the&nbsp;US&nbsp;🇺🇸 
+            App works only in the United&nbsp;States&nbsp;🇺🇸 
+            <br />
+            <br />
+            Developed by <a className='zip__link' href='https://sergeyegorian.com/' target="_blank" rel="noreferrer">Serge&nbsp;Yegorian&nbsp;🇺🇦</a>
             <br />
             <br />
 
