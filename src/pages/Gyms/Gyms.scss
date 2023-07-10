@@ -28,13 +28,13 @@
         align-items: center;
         flex-direction: column;
         width: fit-content;
-        border: 1px solid transparent;
+        border: 2px solid transparent;
         width: 302px;
     }
 
     &__container:hover {
-        box-shadow: 0 0 10px $mainhover;
-        border: 1px solid $mainhover;
+        box-shadow: 0 0 10px $main;
+        border: 2px solid $main;
     }
 
     &__container:hover &__address, &__container:hover &__name {
